@@ -4,7 +4,7 @@ class Judge < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, uniqueness: true
+  validates_uniqueness_of :username
 
   private
   def email_required?

@@ -19,6 +19,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'rspec-rails', '~> 2.14.1'
+  gem 'shoulda-matchers', '~> 2.5.0'
+  gem 'database_cleaner', '~> 1.2.0'
+  gem 'fivemat', '~> 1.2.1'
+  gem 'factory_girl_rails', '~> 4.4.1'
+end
+
 group :production do
   gem 'rails_12factor'
 end
