@@ -4,6 +4,8 @@ ruby '2.1.0'
 gem 'rails', '4.0.3'
 gem 'puma', '~> 2.7.1'
 gem 'pg', '~> 0.17.1'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise', '~> 3.2.3'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
