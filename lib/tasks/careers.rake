@@ -34,3 +34,4 @@ namespace :careers do
     Career.where(name: 'Ingenieria en Seguridad Laboral e Higiene Ambiental - Sede Alajuela').first_or_create
   end
 end
+
