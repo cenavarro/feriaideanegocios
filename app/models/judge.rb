@@ -6,6 +6,8 @@ class Judge < ActiveRecord::Base
 
   validates_uniqueness_of :username
 
+  has_many :project
+
   private
   def email_required?
     false
