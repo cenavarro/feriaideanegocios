@@ -1,4 +1,6 @@
 ActiveAdmin.register Judge do
+  menu priority: 3
+
   permit_params :username, :email, :password, :password_confirmation
 
   index do
@@ -17,5 +19,5 @@ ActiveAdmin.register Judge do
     end
     f.actions
   end
-
 end
+
