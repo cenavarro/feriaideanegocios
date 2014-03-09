@@ -1,5 +1,5 @@
 ActiveAdmin.register Judge do
-  menu priority: 3
+  menu priority: 2
 
   permit_params :username, :email, :password, :password_confirmation, :phase
 
