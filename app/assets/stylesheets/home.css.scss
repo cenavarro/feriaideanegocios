@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'AR Techni';
+  src: url('/assets/ar_techni.ttf');
+}
+
+body {
+  font-family: 'AR Techni';
+  width: 65%;
+  margin: auto;
+  background-image: url('/assets/home-bg.png');
+}
+
+#banner {
+  padding-top: 15px;
+  margin-bottom: 32px;
+  height: 125px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+#content {
+  background-color: #3399CC;
+  height: 500px;
+}
+
+#main-title {
+  font-size: 43px;
+  color: #FFCE01;
+  padding: 45px 0px 0px 24%;
+}
+
+#description {
+  color: white;
+  width: 50%;
+  padding: 33px 0px 0px 24%;
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 39px;
+}
+
+#characteristics {
+  background-image:url("/assets/yellow-bg.png");
+  height: 78px;
+  width: 44%;
+  font-size: 20px;
+  float: left;
+
+  span{
+    color: white;
+    display: block;
+    padding: 7px 15px 0px 0px;
+    text-align: right;
+  }
+}
+
+.link-style {
+  text-decoration: none !important;
+  font-size: 21px;
+  vertical-align: middle;
+  display: table-cell;
+  height: inherit;
+  padding-left: 14px;
+}
+
+.link-container {
+  height: 31px;
+  background-color: white;
+  float: right;
+  vertical-align: middle;
+}
+
+#enter-idea {
+  width: 51%;
+  margin-bottom: 16px;
+
+  a {
+    color: black;
+  }
+}
+
+#download-document {
+  width: 44%;
+
+  a {
+    color: #25A8E0;
+  }
+}
+
+#footer {
+  text-align: center;
+  padding: 18px 0px 0px 0px;
+
+  span {
+    font-size: 16pt;
+  }
+}
+
