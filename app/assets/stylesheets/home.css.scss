@@ -1,6 +1,5 @@
 @font-face {
   font-family: 'AR Techni';
-  src: url('/assets/ar_techni.ttf');
 }
 
 body {
@@ -93,6 +92,7 @@ body {
 #footer {
   text-align: center;
   padding: 18px 0px 0px 0px;
+  margin-bottom: 20px;
 
   span {
     font-size: 16pt;

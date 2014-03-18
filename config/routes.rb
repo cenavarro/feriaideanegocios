@@ -4,4 +4,6 @@ FeriaIdeaNegocios::Application.routes.draw do
   ActiveAdmin.routes(self)
   post 'admin/assing_projects/assign' => 'admin/assign_projects#assign', as: 'assing_project'
   root 'home#index'
+
+  resources :projects, only: [:create]
 end

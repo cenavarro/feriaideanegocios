@@ -1,0 +1,57 @@
+<div id="new-idea-form" title="Inscripcion nueva idea">
+  <span class='title'>INSTITUTO TECNOLOGICO DE COSTA RICA</span>
+  <span class='title'>ESCUELA DE ADMINISTRACION DE EMPRESAS</span>
+  <span class='title'>FERIA DE IDEAS DE NEGOCIO 2014</span>
+  <span class='title'>GUIA PARA LA INSCRIPCION EN LA ETAPA 1</span>
+
+  <section id='form'>
+    <%= form_for(Project.new, remote: true) do |f| %>
+      <div id="server-errors">
+        <ul id='list-errors'></ul>
+      </div>
+      <span class='labels'>1. Nombre del Proyecto o Idea de Negocio</span>
+      <%= f.text_field(:name, required: true) %>
+      </br></br>
+
+      <span class='labels'>
+        2. Seleccione la categoria en la cual desea competir 
+          (si el jurado determina que el proyecto pertenece a otra categoria se efectuara el cambio)
+      </span>
+      <% category_array = Category.all.map { |category| [category.name, category.id] } %>
+      <%= f.select(:category_id, options_for_select(category_array)) %>
+      </br></br>
+
+      <span class='labels'>3. Datos personales de las personas proponentes</span>
+      <section id='participants_group'>
+        <%= link_to_add_participant(f)%>
+      </section>
+      </br></br>
+
+      <span class='labels'>4. Motivacion y conocimientos en el area del negocio propuesto</span>
+      <p>
+        Las variables a considerar en este apartado puender ser: 
+        <b>capacitacion formal o informal, estudios, contactos, conocimientos, 
+        experiencias personales emprendedoras, su actitud o motivacion hacia el proyecto.</b>
+      </p>
+      <%= f.text_area(:motivation, cols: 60, rows: 10, required: true) %>
+      </br></br>
+
+      <span class='labels'>5. Descripcion de la Idea</span>
+      <p>
+        Explique cual es la idea fundamental, senalando cuales son los factores que han 
+        motivado esta idea y por que va a tener exito. Es vital indicar <b>que necesidades va a cubrir y en que mercado.</b>
+      </p>
+      <%= f.text_area(:description, cols: 20, rows: 10, required: true) %>
+      </br></br>
+
+      <span class='labels'>6. Ventajas competitivas</span>
+      <p>
+      Cual es el valor agregado que refleja su producto o servicio para el consumidor, cual es su utilidad diferenciada. 
+      Ademas senale las ventajas que tendria sobre la competencia, por que el cliente potencial preferira comprar su servicio 
+      o producto y no otros existentes?
+      </p>
+      <%= f.text_area(:advantage, cols: 20, rows: 10, required: true) %>
+    <% end %>
+  </section>
+</div>
+

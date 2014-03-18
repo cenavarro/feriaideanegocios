@@ -18,7 +18,7 @@ describe Judge, "in_phase" do
 end
 
 describe Judge, "#add_projects" do
-  let(:project) { FactoryGirl.create(:project) }
+  let(:project) { FactoryGirl.create(:project_with_participants) }
   let(:judge) { FactoryGirl.create(:judge) }
 
   it "persits projects to the projects relationship" do

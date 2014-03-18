@@ -1,0 +1,83 @@
+#new-idea-form {
+  .title {
+    text-align: center;
+    display: block;
+    padding-bottom: 8px;
+    font-weight: bold;
+  }
+
+  #form {
+    margin: 15px 0px 0px 0px;
+  }
+
+  .labels {
+    display: block;
+    margin: 20px 0px 20px 0px;
+    font-weight: bold;
+  }
+
+  p {
+    margin-bottom: 25px;
+  }
+}
+
+.fields {
+  border: 2px solid;
+  border-style: outset;
+  padding: 13px 0px 0px 15px;
+  border-radius: 13px;
+  margin-bottom: 10px;
+  overflow: hidden;
+
+  input, select {
+    margin-bottom: 10px;
+  }
+
+  .carnet-field, .email-field {
+    width: 40%;
+  }
+
+ .phone-field {
+   width: 50%;
+  }
+
+  .remove-field {
+    margin-bottom: 20px;
+    float: right;
+    padding-right: 20px;
+  }
+}
+
+.error {
+  display: table-cell;
+  color: red;
+  padding-bottom: 15px;
+}
+
+#server-errors {
+  width: 400px;
+  border: 1px solid #D8D8D8;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: rgb(255, 249, 242);
+  color: red;
+  text-align: center;
+  margin: auto;
+  display: none;
+}
+
+select  {
+  height: 30px;
+  color: white;
+  background: #2c343c;
+  border: #2c343c;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 10px;
+}
+
+.add-participant-link {
+  font-size: 16px;
+}
