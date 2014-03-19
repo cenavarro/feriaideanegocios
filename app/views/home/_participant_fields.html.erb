@@ -1,6 +1,6 @@
 <section class='fields'>
   <div class='carnet-field'>
-    Carnet: <%= f.text_field(:carnet, required: true) %>
+    Carnet: <%= f.text_field(:carnet, required: true, placeholder: '201400000') %>
   </div>
   <div class='name-field'>
     Nombre: <%= f.text_field(:name, required: true) %>
@@ -10,10 +10,10 @@
     Carrera: <%= f.select(:career_id, options_for_select(career_array)) %>
   </div>
   <div class='email-field'>
-    Email: <%= f.email_field(:email, required: true) %>
+    Email: <%= f.email_field(:email, required: true, placeholder: 'participante@email.com') %>
   </div>
   <div class='phone-field'>
-    Telefono: <%= f.text_field(:phone) %>
+    Telefono: <%= f.text_field(:phone, placeholder: '2525-2525') %>
   </div>
   <div class='remove-field'>
     <%= f.hidden_field(:_destroy) %>
