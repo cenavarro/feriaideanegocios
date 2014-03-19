@@ -40,7 +40,7 @@ ActiveAdmin.register_page "assign projects" do
         input type: :hidden, name: request_forgery_protection_token.to_s, value: form_authenticity_token
         input type: :hidden, name: 'judge_id', value: judge.id
         panel "Proyectos" do
-          table_for Project.in_phase(params[:phase]) do
+          table_for Project.in_phase(params[:phase]).order('id ASC') do
             column "Asignado" do |project|
               check_box 'projects', project.id, checked: judge_projects.include?(project)
             end
