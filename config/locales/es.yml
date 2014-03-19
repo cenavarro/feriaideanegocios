@@ -140,6 +140,9 @@ es:
         description: 'Descripcion'
         advantage: 'Ventaja'
         judge: 'Juez'
+      judge:
+        phase: 'Fase'
+        username: 'Nombre Usuario'
       admin_user:
         created_at: 'Creado el'
         sign_in_count: 'Numero sesiones'

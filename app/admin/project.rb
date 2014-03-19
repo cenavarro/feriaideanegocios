@@ -4,11 +4,15 @@ ActiveAdmin.register Project do
   permit_params :code, :name, :stand, :phase, :motivation, :description, :advantage, :category_id, :judge_id, participant_ids: []
 
   index do
-    column :category
+    selectable_column
     column :code
     column :name
-    column :stand
+    column :category
     column :phase
+    column :stand
+    column :motivation
+    column :description
+    column :advantage
     column "Participantes" do |project|
       project.participants.map { |p| p.carnet }.join('</br>').html_safe
     end
