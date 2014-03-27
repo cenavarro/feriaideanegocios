@@ -44,6 +44,12 @@ $(function() {
     $( "#new-idea-form" ).dialog("open");
   });
 
+  //Add listener to click new project modal
+  $("#denied-link").click(function(e) {
+    e.preventDefault();
+    alert('No estamos en periodo de recepcion de ideas de negocio.')
+  });
+
   //Add listeners to ajax form event
   $("#new_project").on("ajax:success", function(e, data, status, xhr) {
     alert('Idea Ingresada exitosamente!');

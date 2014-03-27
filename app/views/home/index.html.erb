@@ -24,7 +24,7 @@
       <span>INNOVACION</span>
     </article>
     <article class='link-container' id='enter-idea'>
-      <a href='#' id='new-idea' class='link-style'>PARTICIPA! Ingresa tu idea</a>
+      <a href='#' id=<%= FairPeriod.can_add_project? ? 'new-idea' : 'denied-link' %> class='link-style'>PARTICIPA! Ingresa tu idea</a>
     </article>
     <article class='link-container' id='download-document'>
       <a href='/Bases_Feria_Idea_Negocios.docx' class='link-style'>Bases de la Feria</a>

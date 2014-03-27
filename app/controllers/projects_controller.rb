@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
   def create
-    project = Project.new(new_project_params.merge(phase: 1))
-    if project.save
-      render json: { message: "El proyecto fue ingresado correctamente!" }
+    if valid_period?
+      save_project
     else
-      render json: { errors: project.errors.full_messages }, status: 422
+      render json: { errors: ['No estamos en periodo de recepcion de ideas.'] }, status: 500
     end
   end
 
@@ -24,6 +23,19 @@ class ProjectsController < ApplicationController
         :email
       ]
     )
+  end
+
+  def save_project
+    project = Project.new(new_project_params.merge(phase: 1))
+    if project.save
+      render json: { message: "El proyecto fue ingresado correctamente!" }
+    else
+      render json: { errors: project.errors.full_messages }, status: 422
+    end
+  end
+
+  def valid_period?
+    FairPeriod.can_add_project?
   end
 end
 
