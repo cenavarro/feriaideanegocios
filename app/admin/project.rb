@@ -10,9 +10,6 @@ ActiveAdmin.register Project do
     column :category
     column :phase
     column :stand
-    column :motivation
-    column :description
-    column :advantage
     column "Participantes" do |project|
       project.participants.map { |p| p.carnet }.join('</br>').html_safe
     end
