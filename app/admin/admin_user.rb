@@ -12,6 +12,10 @@ ActiveAdmin.register AdminUser do
     actions
   end
 
+  scope :all, default: true do |admin_users|
+    admin_users.where('type is ? or type = ?', nil, 'AdminUser')
+  end
+
   filter :email
   filter :current_sign_in_at
   filter :sign_in_count

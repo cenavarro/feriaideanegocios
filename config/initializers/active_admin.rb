@@ -1,3 +1,4 @@
+require_relative '../../lib/feria/cancancan_adapter'
 ActiveAdmin.setup do |config|
   config.before_filter :set_admin_locale
 
@@ -7,6 +8,9 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Feria Idea Negocios"
+
+  #Own Authorization Adapter
+  config.authorization_adapter = Feria::CanCanCanAdapter
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -196,14 +200,14 @@ ActiveAdmin.setup do |config|
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
-  config.namespace :admin do |admin|
-    admin.build_menu :default do |menu|
-      menu.add label: 'Asignar Proyectos', priority: 3 do |phase|
-        phase.add label: "Etapa 1", url: "/admin/assign_projects?phase=1"
-        phase.add label: "Etapa 2", url: "/admin/assign_projects?phase=2"
-      end
-    end
-  end
+  #config.namespace :admin do |admin|
+    #admin.build_menu :default do |menu|
+      #menu.add label: 'Asignar Proyectos', priority: 3 do |phase|
+        #phase.add label: "Etapa 1", url: "/admin/assign_projects?phase=1"
+        #phase.add label: "Etapa 2", url: "/admin/assign_projects?phase=2"
+      #end
+    #end
+  #end
 
   # == Download Links
   #

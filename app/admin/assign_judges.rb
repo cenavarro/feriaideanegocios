@@ -28,13 +28,13 @@ ActiveAdmin.register_page "assign projects" do
     select id: "select_judge" do
       option ""
       judges_in_phase.each do |judge_in_phase|
-        option judge_in_phase.username, value: judge_in_phase.id
+        option judge_in_phase.email, value: judge_in_phase.id
       end
     end
 
     if params[:id]
       br
-      h2 "Juez: #{judge.username}"
+      h2 "Juez: #{judge.email}"
       form action: assing_project_path, method: :post do
         input type: :hidden, name: 'phase', value: params[:phase]
         input type: :hidden, name: request_forgery_protection_token.to_s, value: form_authenticity_token

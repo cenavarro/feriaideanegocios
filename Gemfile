@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-ui-rails', '~> 4.2.0'
+gem 'cancancan', '~> 1.7.1'
 
 group :doc do
   gem 'sdoc', require: false

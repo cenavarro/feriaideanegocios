@@ -92,6 +92,8 @@ es:
       block: "Lista"
       grid: "Cuadrícula"
       blog: "Blog"
+    access_denied:
+      message: 'No esta autorizado para realizar esta accion'
   views:
       pagination:
           truncate: "..."
