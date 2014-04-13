@@ -3,6 +3,9 @@ require 'spec_helper'
 describe Project, "associations" do
   it { should have_and_belong_to_many(:participants) }
   it { should belong_to(:category) }
+  it { should have_many(:assign_projects) }
+  it { should have_many(:judges).through(:assign_projects) }
+  it { should have_many(:ratings) }
 end
 
 describe Project, "validations" do

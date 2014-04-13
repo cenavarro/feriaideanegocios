@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411224431) do
+ActiveRecord::Schema.define(version: 20140413182854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20140411224431) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "assign_projects", force: true do |t|
+    t.integer "judge_id"
+    t.integer "project_id"
+    t.integer "phase"
+  end
 
   create_table "careers", force: true do |t|
     t.string "name"
@@ -75,9 +81,19 @@ ActiveRecord::Schema.define(version: 20140411224431) do
     t.text    "description"
     t.text    "advantage"
     t.integer "category_id"
-    t.integer "judge_id"
   end
 
-  add_index "projects", ["judge_id"], name: "index_projects_on_judge_id", using: :btree
+  create_table "ratings", force: true do |t|
+    t.integer "judge_id"
+    t.integer "project_id"
+    t.integer "phase"
+    t.float   "criteria_1"
+    t.float   "criteria_2"
+    t.float   "criteria_3"
+    t.float   "criteria_4"
+    t.float   "criteria_5"
+    t.float   "criteria_6"
+    t.float   "criteria_7"
+  end
 
 end

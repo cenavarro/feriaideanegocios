@@ -1,8 +1,8 @@
 class Judge < AdminUser
 
-  #validates_uniqueness_of :username
-
-  has_many :projects
+  has_many :assign_projects
+  has_many :projects, through: :assign_projects
+  has_many :ratings
 
   scope :in_phase, ->(phase) { where(phase: phase) }
 
@@ -10,9 +10,14 @@ class Judge < AdminUser
     update(project_ids: ids)
   end
 
-  #private
-  #def email_required?
-    #false
-  #end
+  def admin?
+    false
+  end
+
+  def unrated_projects
+    rated_projects = ratings.where('phase = ?', phase).map(&:project)
+    projects.where('projects.phase = ?', phase) - rated_projects
+  end
+
 end
 

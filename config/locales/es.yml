@@ -323,6 +323,7 @@ es:
       judge: 'Juez'
       admin_user: 'Administrador'
       fair_period: 'Periodo Feria'
+      rating: 'Calificacion'
     attributes:
       participant:
         name: 'Nombre'
@@ -351,3 +352,13 @@ es:
       fair_period:
         started_at: 'Inicia el'
         ended_at: 'Termina el'
+      rating:
+        judge: 'Juez'
+        project: 'Proyecto'
+        criteria_1: 'Criterio 1'
+        criteria_2: 'Criterio 2'
+        criteria_3: 'Criterio 3'
+        criteria_4: 'Criterio 4'
+        criteria_5: 'Criterio 5'
+        criteria_6: 'Criterio 6'
+        criteria_7: 'Criterio 7'

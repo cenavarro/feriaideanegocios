@@ -12,7 +12,7 @@ class Ability
 
   def judge_privileges(user)
     can :read, ActiveAdmin::Page, name: "Dashboard"
-    can :manage, :assign_projects
+    can :manage, Rating
   end
 end
 
