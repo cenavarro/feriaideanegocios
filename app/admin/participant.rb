@@ -7,10 +7,24 @@ ActiveAdmin.register Participant do
     selectable_column
     column :carnet
     column :name
-    column :email
-    column :phone
+    if current_admin_user.admin?
+      column :email
+      column :phone
+    end
     column :career
-    actions
+    actions if current_admin_user.admin?
+  end
+
+  show do |participant|
+    attributes_table do
+      row :carnet
+      row :name
+      if current_admin_user.admin?
+        row :email
+        row :phone
+      end
+      row :career
+    end
   end
 
   scope :all, default: true do |participant|
