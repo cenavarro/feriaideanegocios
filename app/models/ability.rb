@@ -12,6 +12,8 @@ class Ability
 
   def judge_privileges(user)
     can :read, ActiveAdmin::Page, name: "Dashboard"
+    can :read, Participant
+    can :read, Project
     can :manage, Rating
   end
 end

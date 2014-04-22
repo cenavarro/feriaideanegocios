@@ -3,6 +3,14 @@ ActiveAdmin.register Project do
 
   permit_params :code, :name, :stand, :phase, :motivation, :description, :advantage, :category_id, :judge_id, participant_ids: []
 
+  scope :all, default: true do |participant|
+    if current_admin_user.admin?
+      Project.all
+    else
+      current_admin_user.projects
+    end
+  end
+
   index do
     selectable_column
     column :code
@@ -11,7 +19,7 @@ ActiveAdmin.register Project do
     column :phase
     column :stand
     column "Participantes" do |project|
-      project.participants.map { |p| p.carnet }.join('</br>').html_safe
+      project.participants.map { |p| link_to p.carnet, admin_participant_path(p) }.join('</br>').html_safe
     end
     actions
   end
