@@ -2,14 +2,11 @@ A_PROJECT_NAME = 'Project name'
 A_MOTIVATION = 'motivation'
 A_DESCRIPTION = 'description'
 AN_ADVANTAGE = 'advantage'
+A_CARNET = '200901010'
+A_NAME = 'Test Testerson'
+AN_EMAIL = 'test@testerson.com'
 
-PARTICIPANTS_ATTRIBUTES = [
-  {
-    carnet: 'carnet',
-    name: 'Test Testerson',
-    email: 'test@testerson.com'
-  }
-]
+PARTICIPANTS_ATTRIBUTES = {"participant1" => { carnet: A_CARNET, name: A_NAME, email: AN_EMAIL } }
 
 PROJECT_ATTRIBUTES = {
   name: A_PROJECT_NAME,

@@ -42,3 +42,32 @@ describe Project, "in_phase" do
   end
 end
 
+describe Project, "#add_participants" do
+  let(:project) { FactoryGirl.create(:project_with_participants) }
+
+  it "adds the participants to the project" do
+    PARTICIPANTS_ATTRIBUTES.each do |key, participant_hash|
+      expect(Participant).to receive(:where).with(carnet: participant_hash[:carnet]).and_call_original
+    end
+    project.add_participants(PARTICIPANTS_ATTRIBUTES)
+  end
+
+  context "when participant is not a new record" do
+    let(:participant_proxy) { double(:participant_proxy, first_or_initialize: participant) }
+    let(:participant) { FactoryGirl.create(:participant, carnet: A_CARNET) }
+
+    before { allow(Participant).to receive(:where) { participant_proxy } }
+
+    it "doesn't set the participant attributes" do
+      expect(participant).to_not receive(:attributes)
+      project.add_participants(PARTICIPANTS_ATTRIBUTES)
+    end
+  end
+
+  it "persists participants to participants relationship" do
+    expect {
+      project.add_participants(PARTICIPANTS_ATTRIBUTES)
+    }.to change { project.participants.count }.by(1)
+  end
+end
+

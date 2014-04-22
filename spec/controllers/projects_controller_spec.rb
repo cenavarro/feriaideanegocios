@@ -2,17 +2,19 @@ require 'spec_helper'
 
 describe ProjectsController, "#create" do
   let(:project) { double(:project).as_null_object }
-  let(:params) { { format: :json, project: PROJECT_ATTRIBUTES } }
+  let(:params) { { format: :json, project: PROJECT_ATTRIBUTES.with_indifferent_access } }
 
   context "when is in available period" do
 
     before do
       allow(FairPeriod).to receive(:can_add_project?) { true }
-      allow(Project).to receive(:new) { project }
+      allow(Feria::Projects::Factory).to receive(:new) { project }
     end
 
     it "initializes the project" do
-      expect(Project).to receive(:new) { project }
+      expect(Feria::Projects::Factory).to receive(:new).with(
+        PROJECT_ATTRIBUTES.with_indifferent_access
+      )
       post :create, params
     end
 

@@ -1,3 +1,4 @@
+require 'feria/projects/factory'
 class ProjectsController < ApplicationController
   def create
     if valid_period?
@@ -8,25 +9,8 @@ class ProjectsController < ApplicationController
   end
 
   private
-  def new_project_params
-    params.require(:project).permit(
-      :name,
-      :category_id,
-      :motivation,
-      :description,
-      :advantage,
-      participants_attributes: [
-        :name,
-        :carnet,
-        :career_id,
-        :phone,
-        :email
-      ]
-    )
-  end
-
   def save_project
-    project = Project.new(new_project_params.merge(phase: 1))
+    project = Feria::Projects::Factory.new(params[:project]).build
     if project.save
       render json: { message: "El proyecto fue ingresado correctamente!" }
     else
