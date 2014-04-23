@@ -12,7 +12,7 @@ ActiveAdmin.register AdminUser do
     actions
   end
 
-  scope :all, default: true do |admin_users|
+  scope :all do |admin_users|
     admin_users.where('type is ? or type = ?', nil, 'AdminUser')
   end
 

@@ -3,7 +3,7 @@ ActiveAdmin.register Project do
 
   permit_params :code, :name, :stand, :phase, :motivation, :description, :advantage, :category_id, :judge_id, participant_ids: []
 
-  scope :all, default: true do |participant|
+  scope :all do |participant|
     if current_admin_user.admin?
       Project.all
     else

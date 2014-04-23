@@ -11,7 +11,7 @@ ActiveAdmin.register Rating do
     actions
   end
 
-  scope :all, default: true do |ratings|
+  scope :all do |ratings|
     if current_admin_user.admin?
       Rating.all
     else

@@ -27,7 +27,7 @@ ActiveAdmin.register Participant do
     end
   end
 
-  scope :all, default: true do |participant|
+  scope :all do |participant|
     if current_admin_user.admin?
       Participant.all
     else
