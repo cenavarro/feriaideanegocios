@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-  menu parent: 'Mantenimiento', priority: 2, label: 'Admins'
+  menu parent: 'Mantenimiento', label: 'Admins'
   permit_params :email, :password, :password_confirmation
 
   index do

@@ -1,6 +1,5 @@
 ActiveAdmin.register Project do
-  menu priority: 3
-
+  menu priority: 1
   permit_params :code, :name, :stand, :phase, :motivation, :description, :advantage, :category_id, :judge_id, participant_ids: []
 
   controller do

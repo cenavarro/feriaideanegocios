@@ -1,6 +1,5 @@
 ActiveAdmin.register Participant do
-  menu priority: 4
-
+  menu parent: 'Mantenimiento'
   permit_params :carnet, :name, :email, :phone, :career_id
 
   controller do

@@ -34,7 +34,7 @@ ActiveAdmin.register_page 'conclude_phase' do
           column 'Promedio Total', :total_rating
         end
       end
-      input type: :submit, value: 'Concluir Fase'
+      input type: :submit, value: 'Mover a Fase 2'
     end
   end
 end

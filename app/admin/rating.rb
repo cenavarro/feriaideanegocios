@@ -1,4 +1,5 @@
 ActiveAdmin.register Rating do
+  menu priority: 2
   permit_params :judge_id, :project_id, :phase, :criteria_1, :criteria_2, :criteria_3, :criteria_4, :criteria_5, :criteria_6, :criteria_7
 
   index do
