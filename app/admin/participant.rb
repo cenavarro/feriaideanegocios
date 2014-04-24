@@ -3,6 +3,17 @@ ActiveAdmin.register Participant do
 
   permit_params :carnet, :name, :email, :phone, :career_id
 
+  controller do
+    def scoped_collection
+      if current_admin_user.admin?
+        Participant.all
+      else
+        participants_ids = current_admin_user.projects.map(&:participants).flatten.map(&:id)
+        Participant.where('id in (?)', participants_ids)
+      end
+    end
+  end
+
   index do
     selectable_column
     column :carnet
@@ -24,15 +35,6 @@ ActiveAdmin.register Participant do
         row :phone
       end
       row :career
-    end
-  end
-
-  scope :all do |participant|
-    if current_admin_user.admin?
-      Participant.all
-    else
-      participants_ids = current_admin_user.projects.map(&:participants).flatten.map(&:id)
-      Participant.where('id in (?)', participants_ids)
     end
   end
 end

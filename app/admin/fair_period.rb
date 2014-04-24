@@ -1,4 +1,5 @@
 ActiveAdmin.register FairPeriod do
+  menu parent: 'Mantenimiento'
   actions :all, except: [:destroy, :new]
 
   permit_params :started_at, :ended_at

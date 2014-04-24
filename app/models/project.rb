@@ -1,3 +1,5 @@
+require 'feria/ratings/calculator'
+
 class Project < ActiveRecord::Base
 
   has_and_belongs_to_many :participants
@@ -19,6 +21,10 @@ class Project < ActiveRecord::Base
       participant.attributes = participant_json if participant.new_record?
       self.participants << participant
     end
+  end
+
+  def total_rating
+    Feria::Ratings::Calculator.new(self).total_rating
   end
 
   private

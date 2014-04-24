@@ -1,4 +1,5 @@
 ActiveAdmin.register Career do
+  menu parent: 'Mantenimiento'
   permit_params :name
 
   index do

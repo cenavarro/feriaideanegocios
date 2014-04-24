@@ -33,7 +33,7 @@ describe Project, "validations" do
   end
 end
 
-describe Project, "in_phase" do
+describe Project, ".in_phase" do
   let!(:project_in_phase_1) { FactoryGirl.create(:project_with_participants, phase: 1) }
   let!(:project_in_phase_2) { FactoryGirl.create(:project_with_participants, phase: 2) }
 
@@ -68,6 +68,17 @@ describe Project, "#add_participants" do
     expect {
       project.add_participants(PARTICIPANTS_ATTRIBUTES)
     }.to change { project.participants.count }.by(1)
+  end
+end
+
+describe Project, "#total_rating" do
+  let(:project) { FactoryGirl.create(:project_with_participants) }
+  let(:rating_calculator) { double(:rating_calculator) }
+
+  it "calls Feria::Ratings::Calculator#total_rating" do
+    expect(Feria::Ratings::Calculator).to receive(:new).with(project) { rating_calculator }
+    expect(rating_calculator).to receive(:total_rating)
+    project.total_rating
   end
 end
 

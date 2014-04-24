@@ -8,14 +8,17 @@ ActiveAdmin.register Rating do
     end
     column :project
     column :phase
+    column :average
     actions
   end
 
-  scope :all do |ratings|
-    if current_admin_user.admin?
-      Rating.all
-    else
-      current_admin_user.ratings
+  controller do
+    def scoped_collection
+      if current_admin_user.admin?
+        Rating.all
+      else
+        current_admin_user.ratings
+      end
     end
   end
 

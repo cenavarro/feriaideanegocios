@@ -6,3 +6,8 @@ $(window).load ->
     id = option.prop('value')
     phase = $('#phase').val()
     window.location = "assign_projects?phase=#{phase}&id=#{id}"
+
+$(window).load ->
+  $('#move_projects_form').on 'submit', ->
+    confirm('Esta seguro que desea pasar estos proyectos a segunda fase?')
+

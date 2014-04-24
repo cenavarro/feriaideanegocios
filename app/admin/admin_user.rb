@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-  menu priority: 2, label: 'Admins'
+  menu parent: 'Mantenimiento', priority: 2, label: 'Admins'
   permit_params :email, :password, :password_confirmation
 
   index do
@@ -12,8 +12,10 @@ ActiveAdmin.register AdminUser do
     actions
   end
 
-  scope :all do |admin_users|
-    admin_users.where('type is ? or type = ?', nil, 'AdminUser')
+  controller do
+    def scoped_collection
+      AdminUser.where('type is ? or type = ?', nil, 'AdminUser')
+    end
   end
 
   filter :email

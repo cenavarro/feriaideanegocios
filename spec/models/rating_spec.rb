@@ -19,3 +19,22 @@ describe Rating, "validations" do
   it { should validate_presence_of(:project) }
 end
 
+describe Rating, ".in_phase" do
+  let(:judge) { FactoryGirl.create(:judge) }
+  let(:project) { FactoryGirl.create(:project_with_participants) }
+  let!(:rating_in_phase_1) { FactoryGirl.create(:rating, phase: 1, judge: judge, project: project) }
+  let!(:rating_in_phase_2) { FactoryGirl.create(:rating, phase: 2, judge: judge, project: project) }
+
+  it "returns the ratings in the given phase" do
+    expect(described_class.in_phase(2)).to eq([rating_in_phase_2])
+  end
+end
+
+describe Rating, "#average" do
+  context "when is in phase 1" do
+    let(:rating) { FactoryGirl.create(:rating_with_info, criteria_1: 90, criteria_2: 30, criteria_3: 40, criteria_4: 80) }
+    subject { rating.average }
+    it { should eq(53.33) }
+  end
+end
+
