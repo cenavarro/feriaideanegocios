@@ -3,7 +3,7 @@ ActiveAdmin.register_page 'conclude_phase' do
 
   controller do
     def index
-      @projects = Project.in_phase(1).sort{ |x, y| y.total_rating <=> x.total_rating }
+      @projects = Project.in_phase(1).sort_by{ |x| [x.category_id, -x.total_rating] }
     end
 
     def pass_projects
