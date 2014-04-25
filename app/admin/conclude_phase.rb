@@ -31,7 +31,9 @@ ActiveAdmin.register_page 'conclude_phase' do
             check_box 'projects', project.id , checked: false
           end
           column 'Categoria', :category
-          column 'Nombre', :name
+          column 'Nombre' do |project|
+            link_to project.name, admin_project_path(project)
+          end
           column 'Promedio Total', :total_rating
         end
       end
