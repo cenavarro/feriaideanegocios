@@ -47,6 +47,9 @@ ActiveAdmin.register_page "assign projects" do
             column "Proyecto" do |project|
               project.name
             end
+            column "Categoria" do |project|
+              project.category.name
+            end
           end
         end
         input type: :submit, value: 'Guardar'
