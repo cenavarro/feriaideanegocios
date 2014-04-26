@@ -36,5 +36,14 @@ describe Rating, "#average" do
     subject { rating.average }
     it { should eq(53.33) }
   end
+
+  context "when is in phase 2" do
+    let(:rating) { FactoryGirl.create(:rating_with_info, phase: 2,
+      criteria_1: 81, criteria_2: 82, criteria_3: 83, criteria_4: 84, criteria_5: 85,
+      criteria_6: 86, criteria_7: 87)
+    }
+    subject { rating.average }
+    it { should eq(83.35) }
+  end
 end
 
