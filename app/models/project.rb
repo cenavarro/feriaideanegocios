@@ -14,6 +14,9 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :motivation, :description, :advantage
 
   scope :in_phase, ->(phase) { where(phase: phase) }
+  scope :current, -> { where('extract(year from created_at) = ?', Date.current.year) }
+  scope :old, -> { where('extract(year from created_at) != ?', Date.current.year) }
+
 
   def add_participants(participants_attributes)
     participants_attributes.each do |key, participant_json|

@@ -42,6 +42,24 @@ describe Project, ".in_phase" do
   end
 end
 
+describe Project, ".current" do
+  let!(:new_project) { FactoryGirl.create(:project_with_participants) }
+  let!(:old_project) { FactoryGirl.create(:project_with_participants, created_at: 1.year.ago) }
+
+  subject { Project.current }
+  it { should include(new_project) }
+  it { should_not include(old_project) }
+end
+
+describe Project, ".old" do
+  let!(:new_project) { FactoryGirl.create(:project_with_participants) }
+  let!(:old_project) { FactoryGirl.create(:project_with_participants, created_at: 1.year.ago) }
+
+  subject { Project.old }
+  it { should_not include(new_project) }
+  it { should include(old_project) }
+end
+
 describe Project, "#add_participants" do
   let(:project) { FactoryGirl.create(:project_with_participants) }
 

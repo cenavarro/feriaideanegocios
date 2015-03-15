@@ -2,6 +2,12 @@ ActiveAdmin.register Project do
   menu priority: 1
   permit_params :code, :name, :stand, :phase, :motivation, :description, :advantage, :category_id, :judge_id, participant_ids: []
 
+  scope :current, default: true
+
+  Project.old.pluck(:created_at).map(&:year).uniq.each do |year|
+    scope(year.to_s) { |scope| scope.where('extract(year from created_at) = ?', year) }
+  end
+
   controller do
     def scoped_collection
       if current_admin_user.admin?
