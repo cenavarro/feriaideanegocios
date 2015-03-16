@@ -3,7 +3,7 @@ ActiveAdmin.register_page 'ratings_phase_two' do
 
   controller do
     def index
-      @projects = Project.in_phase(2).sort_by{ |x| [x.category_id, -x.total_rating] }
+      @projects = Project.current.in_phase(2).sort_by{ |x| [x.category_id, -x.total_rating] }
     end
   end
 

@@ -3,11 +3,11 @@ ActiveAdmin.register_page 'conclude_phase' do
 
   controller do
     def index
-      @projects = Project.in_phase(1).sort_by{ |x| [x.category_id, -x.total_rating] }
+      @projects = Project.current.in_phase(1).sort_by{ |x| [x.category_id, -x.total_rating] }
     end
 
     def pass_projects
-      projects = Project.where(id: selected_projects_ids)
+      projects = Project.current.where(id: selected_projects_ids)
       if projects.update_all(phase: 2)
         message = 'Proyectos se han movido a segunda fase'
       else
