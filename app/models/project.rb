@@ -21,7 +21,8 @@ class Project < ActiveRecord::Base
   def add_participants(participants_attributes)
     participants_attributes.each do |key, participant_json|
       participant = Participant.where(carnet: participant_json[:carnet]).first_or_initialize
-      participant.attributes = participant_json if participant.new_record?
+      participant.attributes = participant_json
+      participant.save unless participant.new_record?
       self.participants << participant
     end
   end

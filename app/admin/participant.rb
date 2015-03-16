@@ -21,6 +21,7 @@ ActiveAdmin.register Participant do
       column :email
       column :phone
     end
+    column :location
     column :career
     actions if current_admin_user.admin?
   end
@@ -33,6 +34,7 @@ ActiveAdmin.register Participant do
         row :email
         row :phone
       end
+      row :location
       row :career
     end
   end
