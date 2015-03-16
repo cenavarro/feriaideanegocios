@@ -2,6 +2,12 @@ ActiveAdmin.register Rating do
   menu priority: 2
   permit_params :judge_id, :project_id, :phase, :criteria_1, :criteria_2, :criteria_3, :criteria_4, :criteria_5, :criteria_6, :criteria_7
 
+  scope :current, default: true
+
+  (Rating.pluck(:created_at).map(&:year).uniq - ["2015"]).each do |year|
+    scope(year.to_s) { |scope| scope.where('extract(year from created_at) = ?', year) }
+  end
+
   index do
     selectable_column
     if current_admin_user.admin?
