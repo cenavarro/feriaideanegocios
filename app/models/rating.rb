@@ -8,6 +8,8 @@ class Rating < ActiveRecord::Base
 
   scope :in_phase, ->(phase) { where(phase: phase) }
 
+  scope :current, -> { where('extract(year from created_at) = ?', Date.current.year) }
+
   def average
     send("average_for_phase_#{phase}")
   end
