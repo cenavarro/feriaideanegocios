@@ -1,3 +1,21 @@
+counter = function(e) {
+  var value = $('#project_motivation').val();
+
+  var regex = /\s+/gi;
+  var words = value.trim().replace(regex, ' ').split(' ');
+  var wordCount = words.length;
+
+  if(wordCount > 200) {
+    var permittedText = words.slice(0, 200);
+    $('#project_motivation').val(permittedText.join(" "));
+
+    if((e.keyCode != 8) && (e.keyCode != 46) && (e.keyCode != 202)) {
+      e.preventDefault();
+      return;
+    }
+  }
+};
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").remove();
@@ -65,4 +83,10 @@ $(function() {
 
   //Start form validation
   $("#new_project").validate();
+
+  $('#project_motivation').change(counter);
+  $('#project_motivation').keydown(counter);
+  $('#project_motivation').keypress(counter);
+  $('#project_motivation').keyup(counter);
 });
+
