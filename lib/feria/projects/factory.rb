@@ -18,6 +18,7 @@ module Feria
           motivation: @opts[:motivation],
           description: @opts[:description],
           advantage: @opts[:advantage],
+          motivated: @opts[:motivated],
           phase: 1
         )
       end

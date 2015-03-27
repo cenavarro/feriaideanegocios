@@ -21,13 +21,17 @@
       <%= f.select(:category_id, options_for_select(category_array)) %>
       </br>
 
-      <span class='labels'>3. Datos personales de las personas proponentes</span>
+      <span class='labels'>3. Viene motivado por un curso de carrera? </span>
+      <%= f.select(:motivated, options_for_select(['No', 'Si'])) %>
+      </br>
+
+      <span class='labels'>4. Datos personales de las personas proponentes</span>
       <section id='participants_group'>
         <%= link_to_add_participant(f)%>
       </section>
       </br>
 
-      <span class='labels'>4. Motivacion y habilidades del equipo</span>
+      <span class='labels'>5. Motivacion y habilidades del equipo</span>
       <p>
         Las variables a considerar en este apartado puender ser: 
         <b>capacitacion formal o informal, estudios, contactos, conocimientos, 
@@ -37,7 +41,7 @@
       <%= f.text_area(:motivation, cols: 60, rows: 10, required: true) %>
       </br>
 
-      <span class='labels'>5. Descripcion de la Idea</span>
+      <span class='labels'>6. Descripcion de la Idea</span>
       <p>
         Explique cual es la idea fundamental, senalando cuales son los factores que han 
         motivado esta idea y por que va a tener exito. Es vital indicar <b>que necesidades va a cubrir y en que mercado.</b>
@@ -45,7 +49,7 @@
       <%= f.text_area(:description, cols: 20, rows: 10, required: true) %>
       </br>
 
-      <span class='labels'>6. Ventajas competitivas</span>
+      <span class='labels'>7. Ventajas competitivas</span>
       <p>
       Cual es el valor agregado que refleja su producto o servicio para el consumidor, cual es su utilidad diferenciada. 
       Ademas senale las ventajas que tendria sobre la competencia, por que el cliente potencial preferira comprar su servicio 

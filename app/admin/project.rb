@@ -25,6 +25,9 @@ ActiveAdmin.register Project do
     column :category
     column :phase
     column :stand
+    column 'Motivado por curso' do |project|
+      project.motivated
+    end
     column "Participantes" do |project|
       project.participants.map { |p| link_to p.carnet, admin_participant_path(p) }.join('</br>').html_safe
     end
@@ -40,6 +43,7 @@ ActiveAdmin.register Project do
       f.input :description
       f.input :advantage
       f.input :stand
+      f.input :motivated, as: :select, collection: ['No', 'Si']
       f.input :phase
       f.input :participants, as: :check_boxes, collection: Participant.all, member_label: Proc.new { |p| " #{p.carnet} - #{p.name}" }
     end
