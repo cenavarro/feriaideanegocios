@@ -1,5 +1,5 @@
 counter = function(e) {
-  var value = $('#project_motivation').val();
+  var value = $(this).val();
 
   var regex = /\s+/gi;
   var words = value.trim().replace(regex, ' ').split(' ');
@@ -7,7 +7,7 @@ counter = function(e) {
 
   if(wordCount > 200) {
     var permittedText = words.slice(0, 200);
-    $('#project_motivation').val(permittedText.join(" "));
+    $(this).val(permittedText.join(" "));
 
     if((e.keyCode != 8) && (e.keyCode != 46) && (e.keyCode != 202)) {
       e.preventDefault();
@@ -15,6 +15,13 @@ counter = function(e) {
     }
   }
 };
+
+function restrictWords(elementID) {
+  $('#'+elementID).change(counter);
+  $('#'+elementID).keydown(counter);
+  $('#'+elementID).keypress(counter);
+  $('#'+elementID).keyup(counter);
+}
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
@@ -84,9 +91,8 @@ $(function() {
   //Start form validation
   $("#new_project").validate();
 
-  $('#project_motivation').change(counter);
-  $('#project_motivation').keydown(counter);
-  $('#project_motivation').keypress(counter);
-  $('#project_motivation').keyup(counter);
+  restrictWords('project_motivation');
+  restrictWords('project_description');
+  restrictWords('project_advantage');
 });
 
