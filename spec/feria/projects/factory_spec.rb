@@ -16,6 +16,7 @@ describe Feria::Projects::Factory, "#build" do
       motivation: project_params[:motivation],
       description: project_params[:description],
       advantage: project_params[:advantage],
+      motivated: project_params[:motivated],
       phase: 1
     )
   end

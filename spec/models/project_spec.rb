@@ -76,8 +76,8 @@ describe Project, "#add_participants" do
 
     before { allow(Participant).to receive(:where) { participant_proxy } }
 
-    it "doesn't set the participant attributes" do
-      expect(participant).to_not receive(:attributes)
+    it "saves the new participant attributes" do
+      expect_any_instance_of(Participant).to receive(:save)
       project.add_participants(PARTICIPANTS_ATTRIBUTES)
     end
   end
