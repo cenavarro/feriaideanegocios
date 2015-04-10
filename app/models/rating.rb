@@ -16,12 +16,11 @@ class Rating < ActiveRecord::Base
 
   private
   def average_for_phase_1
-    ((criteria_1 + criteria_2 + criteria_3)/3.0).round(2) rescue 0
+    ((criteria_1 + criteria_2 + criteria_3 + criteria_4 + criteria_5 + criteria_8)/6).round(2) rescue 0
   end
 
   def average_for_phase_2
-    ((criteria_1*0.25) + (criteria_2*0.15) + (criteria_3*0.2) +
-     ((criteria_4 + criteria_5 + criteria_6 + criteria_7)*0.1)).round(2) rescue 0
+    ((criteria_1 + criteria_2 + criteria_3 + criteria_4 + criteria_5 + criteria_6 + criteria_7 + criteria_8)/8).round(2) rescue 0
   end
 end
 
