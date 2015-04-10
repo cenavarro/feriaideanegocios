@@ -1,6 +1,7 @@
 ActiveAdmin.register Project, as: 'proyectos' do
   menu parent: "Reportes", label: "Completo"
   scope :current, default: true
+  before_filter :skip_sidebar!, :only => :index
 
   Project.old.pluck(:created_at).map(&:year).uniq.each do |year|
     scope(year.to_s) { |scope| scope.where('extract(year from created_at) = ?', year) }
@@ -42,7 +43,7 @@ ActiveAdmin.register Project, as: 'proyectos' do
     end
   end
 
-  index do
+  index(download_links: proc{ current_admin_user.admin? })do
     column :name
     column :description
     column :stand
