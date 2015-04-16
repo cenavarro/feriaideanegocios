@@ -13,6 +13,7 @@ ActiveAdmin.register Project, as: 'proyectos' do
     sheet.add_row []
     sheet.add_row [
       'Proyecto',
+      'Categoria',
       'Descripción',
       'Motivación',
       'Ventajas',
@@ -26,6 +27,7 @@ ActiveAdmin.register Project, as: 'proyectos' do
       participants = project.participants
       sheet.add_row [
         project.name,
+        project.category.name,
         project.description,
         project.motivation,
         project.advantage,
@@ -45,6 +47,9 @@ ActiveAdmin.register Project, as: 'proyectos' do
 
   index(download_links: proc{ current_admin_user.admin? })do
     column :name
+    column :category do |project|
+      project.category.name
+    end
     column :description
     column :stand
     column "Participantes" do |project|
