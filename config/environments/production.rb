@@ -16,6 +16,6 @@ FeriaIdeaNegocios::Application.configure do
   config.assets.compile = true
   config.assets.precompile += %w( active_admin.css active_admin/print.css active_admin.js )
   config.assets.enabled = true
-  config.time_zone = 'Central America'
-  config.active_record.default_timezone = 'Central America'
+  config.time_zone = 'America/Guatemala'
+  config.active_record.default_timezone = 'America/Guatemala'
 end
