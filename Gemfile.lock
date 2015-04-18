@@ -28,9 +28,6 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activeadmin-axlsx (2.0.1)
-      activeadmin (>= 0.5.0)
-      axlsx
     activemodel (4.0.3)
       activesupport (= 4.0.3)
       builder (~> 3.1.0)
@@ -212,7 +209,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  activeadmin-axlsx
+  axlsx
   cancancan (~> 1.7.1)
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.2.0)

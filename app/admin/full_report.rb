@@ -1,68 +1,60 @@
-ActiveAdmin.register Project, as: 'proyectos' do
-  menu parent: "Reportes", label: "Completo"
-  scope :current, default: true
-  before_filter :skip_sidebar!, :only => :index
+ActiveAdmin.register_page "full reports" do
+  menu false
 
-  Project.old.pluck(:created_at).map(&:year).uniq.each do |year|
-    scope(year.to_s) { |scope| scope.where('extract(year from created_at) = ?', year) }
-  end
+  controller do
+    def generate
+      package = Axlsx::Package.new
+      wb = package.workbook
+      wb.add_worksheet(name: 'Proyectos') do |sheet|
+        sheet.add_row []
+        add_header(sheet)
+        add_main_content(sheet)
+      end
+      send_data package.to_stream.read, type: 'application/xlsx', filename: filename
+    end
 
-  xlsx do
-    delete_columns :id, :name, :stand, :motivation, :description, :advantage, :code, :created_at, :updated_at, :motivated, :phase
-    # 'Proyecto', 'Descripcion', 'Motivacion', 'Ventajas', 'Stand',  'Participantes', 'Carreras', 'Telefonos', 'Correos'
-    sheet.add_row []
-    sheet.add_row [
-      'Proyecto',
-      'Categoria',
-      'Descripción',
-      'Motivación',
-      'Ventajas',
-      'Stand',
-      'Participantes',
-      'Carreras',
-      'Telefonos',
-      'Correos'
-    ], :widths => [:ignore] * 9
-    Project.current.each do |project|
-      participants = project.participants
+    private
+    def add_header(sheet)
       sheet.add_row [
-        project.name,
-        project.category.name,
-        project.description,
-        project.motivation,
-        project.advantage,
-        project.stand,
-        participants.first.name,
-        participants.first.career.name,
-        participants.first.phone,
-        participants.first.email
+        'Proyecto',
+        'Categoria',
+        'Descripción',
+        'Motivación',
+        'Ventajas',
+        'Stand',
+        'Participantes',
+        'Carreras',
+        'Telefonos',
+        'Correos'
       ], :widths => [:ignore] * 9
-      if participants[1..-1].size > 0
-        participants[1..-1].each do |part|
-          sheet.add_row ['', '', '', '', '', part.name, part.career.name, part.phone, part.email], :widths => [:ignore] * 9
+    end
+
+    def add_main_content(sheet)
+      Project.current.each do |project|
+        participants = project.participants
+        sheet.add_row [
+          project.name,
+          project.category.name,
+          project.description,
+          project.motivation,
+          project.advantage,
+          project.stand,
+          participants.first.name,
+          participants.first.career.name,
+          participants.first.phone,
+          participants.first.email
+        ], :widths => [:ignore] * 9
+        if participants[1..-1].size > 0
+          participants[1..-1].each do |part|
+            sheet.add_row ['', '', '', '', '', part.name, part.career.name, part.phone, part.email], :widths => [:ignore] * 9
+          end
         end
       end
     end
-  end
 
-  index(download_links: proc{ current_admin_user.admin? })do
-    column :name
-    column :category do |project|
-      project.category.name
-    end
-    column :description
-    column :stand
-    column "Participantes" do |project|
-      project.participants.map { |p| p.name }.join('</br>').html_safe
-    end
-    column "Carreras" do |project|
-      project.participants.map { |p| p.career.name }.join('</br>').html_safe
-    end
-    column "Telefonos" do |project|
-      project.participants.map { |p| p.phone }.join('</br>').html_safe
-    end
-    column "Emails" do |project|
-      project.participants.map { |p| p.email }.join('</br>').html_safe
+    def filename
+      time = Time.now
+      "Proyectos-#{time.strftime("%d-%m-%Y%l:%M:%S%P")}.xlsx"
     end
   end
 end
