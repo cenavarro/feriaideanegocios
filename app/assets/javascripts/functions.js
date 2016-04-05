@@ -60,6 +60,9 @@ $(function() {
     close: function() {
       $('#new_project')[0].reset();
       $('.fields').remove()
+    },
+    create: function() {
+      $(this).closest('.ui-dialog').find('.ui-button').addClass("submit-btn");
     }
   });
 
