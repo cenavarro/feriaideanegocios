@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
-gem 'rails', '4.0.3'
-gem 'puma', '~> 2.7.1'
+ruby '2.2.3'
+gem 'rails', '~> 4.1'
+gem 'puma'
 gem 'pg', '~> 0.17.1'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise', '~> 3.2.3'
@@ -17,10 +17,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-ui-rails', '~> 4.2.0'
 gem 'cancancan', '~> 1.7.1'
 gem 'axlsx'
-
-group :doc do
-  gem 'sdoc', require: false
-end
+gem 'minitest'
 
 group :test do
   gem 'rspec-rails', '~> 2.14.1'

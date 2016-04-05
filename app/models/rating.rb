@@ -16,11 +16,13 @@ class Rating < ActiveRecord::Base
 
   private
   def average_for_phase_1
-    ((criteria_1 + criteria_2 + criteria_3 + criteria_4 + criteria_5 + criteria_8)/6).round(2) rescue 0
+    total = [1, 2, 3, 4, 5, 8].inject(0) { |memo, n| memo += send("criteria_#{n}").to_i }
+    (total/6.0).round(2) rescue 0
   end
 
   def average_for_phase_2
-    ((criteria_1 + criteria_2 + criteria_3 + criteria_4 + criteria_5 + criteria_6 + criteria_7 + criteria_8)/8).round(2) rescue 0
+    total = (1..8).to_a.inject(0) { |memo, n| memo += send("criteria_#{n}").to_i }
+    (total/8.0).round(2) rescue 0
   end
 end
 

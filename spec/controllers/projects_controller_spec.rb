@@ -1,14 +1,15 @@
 require 'spec_helper'
 
 describe ProjectsController, "#create" do
-  let(:project) { double(:project).as_null_object }
+  let(:project) { FactoryGirl.create(:project_with_participants) }
+  let(:project_factory) { double(:project_factory, build: project) }
   let(:params) { { format: :json, project: PROJECT_ATTRIBUTES.with_indifferent_access } }
 
   context "when is in available period" do
 
     before do
       allow(FairPeriod).to receive(:can_add_project?) { true }
-      allow(Feria::Projects::Factory).to receive(:new) { project }
+      allow(Feria::Projects::Factory).to receive(:new) { project_factory }
     end
 
     it "initializes the project" do

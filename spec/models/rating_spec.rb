@@ -32,18 +32,19 @@ end
 
 describe Rating, "#average" do
   context "when is in phase 1" do
-    let(:rating) { FactoryGirl.create(:rating_with_info, criteria_1: 90, criteria_2: 30, criteria_3: 40, criteria_4: 80) }
+    let!(:rating) { FactoryGirl.create(:rating_with_info, criteria_1: 90, criteria_2: 30, criteria_3: 40, criteria_4: 80, criteria_5: 85, criteria_8: 90) }
     subject { rating.average }
-    it { should eq(53.33) }
+    it { should eq(69.17) }
   end
 
   context "when is in phase 2" do
-    let(:rating) { FactoryGirl.create(:rating_with_info, phase: 2,
-      criteria_1: 81, criteria_2: 82, criteria_3: 83, criteria_4: 84, criteria_5: 85,
-      criteria_6: 86, criteria_7: 87)
-    }
+    let(:rating) do
+      FactoryGirl.create(:rating_with_info, phase: 2,
+        criteria_1: 81, criteria_2: 82, criteria_3: 83, criteria_4: 84, criteria_5: 85,
+        criteria_6: 86, criteria_7: 87, criteria_8: 88)
+    end
     subject { rating.average }
-    it { should eq(83.35) }
+    it { should eq(84.5) }
   end
 end
 
