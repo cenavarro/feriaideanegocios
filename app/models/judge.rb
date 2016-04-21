@@ -16,7 +16,7 @@ class Judge < AdminUser
 
   def unrated_projects
     rated_projects = ratings.where('phase = ?', phase).map(&:project)
-    projects.where('projects.phase = ?', phase) - rated_projects
+    projects.current.where('projects.phase = ?', phase) - rated_projects
   end
 
 end
