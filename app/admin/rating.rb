@@ -54,7 +54,7 @@ ActiveAdmin.register Rating do
     f.inputs "", class: 'inputs rate-form' do
       if current_admin_user.admin?
         f.input :judge, as: :select, collection: Judge.all.map{ |j| [j.email, j.id] }, include_blank: false
-        f.input :project, include_blank: false
+        f.input :project, include_blank: false, collection: Project.current
         f.input :phase
       else
         if f.object.new_record?
